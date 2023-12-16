@@ -17,6 +17,19 @@ def convert_excel_file():
             messagebox.showerror("Error", f"An error occurred: {str(e)}")
 
 
+def jpg_webp():
+    # select multiple files
+    file_paths = filedialog.askopenfilenames(filetypes=[("JPG files", "*.jpg;*.jpeg")])
+    if file_paths:
+        try:
+            for file_path in file_paths:
+                image = Image.open(file_path)
+                image.save(file_path.rsplit('.', 1)[0] + '.webp', 'webp')
+            messagebox.showinfo("Conversion Successful", f"JPG files converted to WEBP")
+        except Exception as e:
+            messagebox.showerror("Error", f"An error occurred: {str(e)}")
+
+
 class MainWindow:
     def __init__(self, master):
         self.master = master
@@ -39,6 +52,10 @@ class MainWindow:
         # Convert Button
         convert_button = tk.Button(self.options_frame, text="Convert Excel to JSON", command=convert_excel_file)
         convert_button.pack()
+
+        # Convert JPG to WEBP Button
+        jpg_webp_images_button = tk.Button(self.options_frame, text="JPG to WEBP Images", command=jpg_webp)
+        jpg_webp_images_button.pack()
 
 
 def main():
