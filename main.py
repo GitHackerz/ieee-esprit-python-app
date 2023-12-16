@@ -17,8 +17,8 @@ def convert_excel_file():
             messagebox.showerror("Error", f"An error occurred: {str(e)}")
 
 
-def jpg_webp():
-    file_paths = filedialog.askopenfilenames(filetypes=[("JPG files", "*.jpg;*.jpeg")])
+def image_webp():
+    file_paths = filedialog.askopenfilenames(filetypes=[("image files", "*.jpg;*.jpeg;*.png")])
     if file_paths:
         try:
             for file_path in file_paths:
@@ -53,7 +53,7 @@ class MainWindow:
         convert_button.pack()
 
         # Convert JPG to WEBP Button
-        jpg_webp_images_button = tk.Button(self.options_frame, text="JPG to WEBP Images", command=jpg_webp)
+        jpg_webp_images_button = tk.Button(self.options_frame, text="JPG to WEBP Images", command=image_webp)
         jpg_webp_images_button.pack()
 
 
