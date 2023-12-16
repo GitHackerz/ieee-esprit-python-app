@@ -18,7 +18,6 @@ def convert_excel_file():
 
 
 def jpg_webp():
-    # select multiple files
     file_paths = filedialog.askopenfilenames(filetypes=[("JPG files", "*.jpg;*.jpeg")])
     if file_paths:
         try:
