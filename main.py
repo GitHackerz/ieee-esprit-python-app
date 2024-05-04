@@ -9,7 +9,8 @@ def convert_excel_file():
     if file_path:
         try:
             df = pd.read_excel(file_path)
-            df['date'] = df['date'].astype(str)
+            if 'date' in df.columns:
+                df['date'] = df['date'].astype(str)
             json_file_path = file_path.rsplit('.', 1)[0] + '.json'
             df.to_json(json_file_path, orient='records')
             messagebox.showinfo("Conversion Successful", f"Excel file converted to {json_file_path}")
